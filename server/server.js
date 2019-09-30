@@ -9,7 +9,8 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static('build'));
 
 /** ---------- EXPRESS ROUTES ---------- **/
-
+const feebackRouter = require('./routes/route');
+app.use('/api/feedback', feebackRouter);
 
 /** ---------- START SERVER ---------- **/
 app.listen(PORT, () => {

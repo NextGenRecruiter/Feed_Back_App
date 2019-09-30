@@ -15,12 +15,14 @@ class Review extends Component {
 
     onSubmit = () => {
 
-        axios.post('/feedback', this.props.reduxState)
+        axios.post('/api/feedback', this.props.reduxState.feedBackReducer)
 
-        .then( () => {
-            this.setState({submitted: true});
-
-            this.props.dispatch({type: 'RESET'});
+        .then( (response) => {
+           console.log(response.data);
+           
+        }).catch((error)=>{
+            console.log('Error in post', error);
+            
         })
 
     }
@@ -39,7 +41,9 @@ class Review extends Component {
         if (!this.completedFeedback()) {
             return <Button variant="contained" disabled>Incomplete</Button>;
         }
+        this.props.history.push('/ThankYOu');
         return <Button variant="contained" color="primary" onClick={this.onSubmit}>Submit</Button>;
+        
     }
 
 
