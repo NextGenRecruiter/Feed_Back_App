@@ -29,7 +29,7 @@ class feeling extends Component{
     handleClick = () =>{
         this.props.dispatch({
             type:'FEELING',
-            payload:feeling,
+            payload:this.state.feeling,
         })
     }
 
@@ -52,7 +52,7 @@ class feeling extends Component{
                         <Link to='/understanding'>
                                 <Button size="large" variant="outlined" className='btn' color="primary">Back</Button>
                             </Link>
-                        <Link to="/comment">
+                        <Link to="/understanding">
 					        <Button size="large" variant="outlined" onClick={this.handleClick} className='btn' color="primary">Next</Button>
 				        </Link>
                         </div>  

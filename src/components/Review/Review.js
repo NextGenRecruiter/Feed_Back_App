@@ -15,7 +15,7 @@ class Review extends Component {
 
     onSubmit = () => {
 
-        axios.post('/feedback', this.props.reduxState.feedBackReducer)
+        axios.post('/feedback', this.props.reduxState)
 
         .then( () => {
             this.setState({submitted: true});

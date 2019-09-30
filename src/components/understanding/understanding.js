@@ -29,7 +29,7 @@ class understanding extends Component{
     handleClick = () =>{
         this.props.dispatch({
             type:'UNDERSTANDING',
-            payload:understanding,
+            payload:this.state.understanding,
         })
     }
 

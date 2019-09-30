@@ -29,7 +29,7 @@ class supported extends Component{
     handleClick = () =>{
         this.props.dispatch({
             type:'SUPPORTED',
-            payload:supported,
+            payload:this.state.supported,
         })
     }
 

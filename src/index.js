@@ -3,8 +3,9 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './components/App/App';
 import registerServiceWorker from './registerServiceWorker';
-import { createStore, combineReducers } from 'redux'
+import { createStore, combineReducers, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
+import logger from 'redux-logger'
 
 const FeedBack ={
     feeling:0,
@@ -16,16 +17,19 @@ const FeedBack ={
 const feedBackReducer = (state = FeedBack, action) => {
     switch (action.type){
         case 'FEELING':
-            return {...state, feeling: action.payload};
-
+            state.feeling = action.payload
+            return state;
         case 'UNDERSTANDING':
-            return {...state, understanding: action.payload};
+            state.understanding = action.payload
+            return state;
 
         case 'SUPPORTED':
-            return {...state, supported: action.payload};
+            state.supported = action.payload
+            return state;
     
         case 'COMMENT':
-            return {...state, comment: action.payload};
+            state.comment = action.payload
+            return state;
 
         case 'RESET':
             return FeedBack
@@ -41,7 +45,8 @@ const feedBackReducer = (state = FeedBack, action) => {
 const storeInstance = createStore (
     combineReducers({
     feedBackReducer,
-    })
+    }),
+    applyMiddleware(logger)
 )
 
 ReactDOM.render( <Provider store = {storeInstance}><App /></Provider>, document.getElementById('root'));

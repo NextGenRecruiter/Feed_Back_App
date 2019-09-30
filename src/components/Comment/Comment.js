@@ -29,7 +29,7 @@ class comment extends Component{
     handleClick = () =>{
         this.props.dispatch({
             type:'COMMENT',
-            payload:comment,
+            payload:this.state.comment,
         })
     }
 
