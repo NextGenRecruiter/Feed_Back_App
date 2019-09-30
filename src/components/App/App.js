@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
 import Header from '../Header/Header'
 import { HashRouter as Router, Route} from 'react-router-dom'
+import Welcome from '../WelcomePage/Welcome'
+import feeling from '../feeling/feeling'
+import understanding from '../understanding/understanding'
+import supported from '../Supported/Supported'
+import comment from '../Comment/Comment'
 import Review from '../Review/Review'
-import Admin from '../Admin/Admin'
-import FeedBack from '../FeedBack/FeedBack'
+
 
 class App extends Component {
   render() {
@@ -11,9 +15,12 @@ class App extends Component {
       <div>
       <Header />
       <Router>
-        <Route exact path='/FeedBack' component={FeedBack}></Route>
+        <Route exact path='/' component={Welcome}></Route>
+        <Route exact path='/feeling' component={feeling}></Route>
+        <Route exact path='/understanding' component={understanding}></Route>
+        <Route exact path='/supported' component={supported}></Route>
+        <Route exact path='/comment' component={comment}></Route>
         <Route exact path='/Review' component={Review}></Route>
-        <Route exact path='/Admin' component={Admin}></Route>
       </Router>
       </div>
     );
