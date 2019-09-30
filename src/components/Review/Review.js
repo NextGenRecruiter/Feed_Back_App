@@ -15,7 +15,7 @@ class Review extends Component {
 
     onSubmit = () => {
 
-        axios.post('/feedback', this.props.feedBackReducer)
+        axios.post('/feedback', this.props.reduxState.feedBackReducer)
 
         .then( () => {
             this.setState({submitted: true});
@@ -27,10 +27,10 @@ class Review extends Component {
 
 
     completedFeedback = () => {
-        if (this.props.feedBackReducer.feelings === 0) return false;
-        if (this.props.feedBackReducer.understanding === 0) return false;
-        if (this.props.feedBackReducer.support === 0) return false;
-        if (this.props.feedBackReducer.comments === '') return false;
+        if (this.props.reduxState.feedBackReducer.feelings === 0) return false;
+        if (this.props.reduxState.feedBackReducer.understanding === 0) return false;
+        if (this.props.reduxState.feedBackReducer.support === 0) return false;
+        if (this.props.reduxState.feedBackReducer.comments === '') return false;
         return true;
     }
 
@@ -47,18 +47,19 @@ class Review extends Component {
         return (
             <div className="Review">
                 <Typography variant="h5">Review</Typography>
-                <Typography variant="body1">Feelings: {this.props.feedBackReducer.feelings}</Typography>
-                <Typography variant="body1">Understanding: {this.props.feedBackReducer.understanding}</Typography>
-                <Typography variant="body1">Support: {this.props.feedBackReducer.supported}</Typography>
-                <Typography variant="body1">Comments: {this.props.feedBackReducer.comment}</Typography>
+                <Typography variant="body1">Feelings: {this.props.reduxState.feedBackReducer.feeling}</Typography>
+                <Typography variant="body1">Understanding: {this.props.reduxState.feedBackReducer.understanding}</Typography>
+                <Typography variant="body1">Support: {this.props.reduxState.feedBackReducer.supported}</Typography>
+                <Typography variant="body1">Comments: {this.props.reduxState.feedBackReducer.comment}</Typography>
                 {this.SubmitButton()}
             </div>
         );
     }
 }
 
-const mapReduxState = reduxState => {
-	return reduxState;
-}
+const mapReduxState = (reduxState) => ({
+  reduxState
+})
+
 
 export default connect(mapReduxState)(Review);

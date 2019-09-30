@@ -40,10 +40,10 @@ class feeling extends Component{
                         margin="normal"
                     />
                     <div className='div-container'>
-                        <Link to='/'>
+                        <Link to='/understanding'>
                                 <Button size="large" variant="outlined" className='btn' color="primary">Back</Button>
                             </Link>
-                        <Link to="/understanding">
+                        <Link to="/comment">
 					        <Button size="large" variant="outlined" className='btn' color="primary">Next</Button>
 				        </Link>
                         </div>  

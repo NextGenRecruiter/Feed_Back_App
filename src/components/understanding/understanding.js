@@ -15,11 +15,11 @@ import TextField from '@material-ui/core/TextField';
 class understanding extends Component{
 
     handleChange = (event) =>{
-        console.log(event);
+        console.log(event.target.value);
         
         this.props.dispatch({
             type:'FEEDBACK',
-            propertyName: this.props.feedBackReducer.understanding,
+            propertyName: this.props.reduxState.feedBackReducer.understanding,
             propertyValue:event.target.value,
         })
         
@@ -49,12 +49,13 @@ class understanding extends Component{
 				        </Link>
                         </div>  
                     </Paper>
+                    <p>{JSON.stringify(this.props.reduxState.feedBackReducer)}</p>
             </div>
         )
     }
 }
-const mapReduxState = reduxState => {
-	return reduxState;
-}
+const mapReduxState = (reduxState) => ({
+    reduxState
+  })
 
 export default connect(mapReduxState)(understanding);

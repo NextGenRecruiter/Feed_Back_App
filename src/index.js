@@ -7,22 +7,25 @@ import { createStore, combineReducers } from 'redux'
 import { Provider } from 'react-redux'
 
 const FeedBack ={
-    feelings: 0,
+    feeling:0,
     understanding:0,
     supported:0,
     comment:''
 }
 
 const feedBackReducer = (state = FeedBack, action) => {
-    if (action.type==='FEEDBACK') {
-        return {...state, [action.nameInRedux]: action.value};
+    switch (action.type){
+        case 'FEEDBACK':
+            return {...state, [action.propertyName]: action.propertyValue};
+    
+        case 'RESET':
+            return FeedBack
+
+        default:
+            return state;
+
     }
 
-    if (action.type==='RESET') {
-        return FeedBack;
-    }
-
-    return state;
 }
 
 
