@@ -13,16 +13,24 @@ import TextField from '@material-ui/core/TextField';
 
 
 class understanding extends Component{
+    state = {
+        understanding:0,
+    }
 
     handleChange = (event) =>{
         console.log(event.target.value);
         
-        this.props.dispatch({
-            type:'FEEDBACK',
-            propertyName: this.props.reduxState.feedBackReducer.understanding,
-            propertyValue:event.target.value,
+        this.setState({
+            understanding:event.target.value
         })
         
+    }
+
+    handleClick = () =>{
+        this.props.dispatch({
+            type:'UNDERSTANDING',
+            payload:understanding,
+        })
     }
 
     render(){
@@ -45,11 +53,10 @@ class understanding extends Component{
                                 <Button size="large" variant="outlined" className='btn' color="primary">Back</Button>
                             </Link>
                         <Link to="/supported">
-					        <Button size="large" variant="outlined" className='btn' color="primary">Next</Button>
+					        <Button size="large" variant="outlined" onClick={this.handleClick} className='btn' color="primary">Next</Button>
 				        </Link>
                         </div>  
                     </Paper>
-                    <p>{JSON.stringify(this.props.reduxState.feedBackReducer)}</p>
             </div>
         )
     }

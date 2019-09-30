@@ -13,15 +13,24 @@ import TextField from '@material-ui/core/TextField';
 
 class comment extends Component{
 
+    state = {
+        comment:'',
+    }
+
     handleChange = (event) =>{
-        console.log(event);
+        console.log(event.target.value);
         
-        this.props.dispatch({
-            type:'FEEDBACK',
-            propertyName: this.props.feedBackReducer.comment,
-            propertyValue:event.target.value,
+        this.setState({
+            comment:event.target.value
         })
         
+    }
+
+    handleClick = () =>{
+        this.props.dispatch({
+            type:'COMMENT',
+            payload:comment,
+        })
     }
 
     render(){
@@ -43,7 +52,7 @@ class comment extends Component{
                                 <Button size="large" variant="outlined" className='btn' color="primary">Back</Button>
                             </Link>
                         <Link to='/Review'>
-                                <Button size="large" variant="outlined" className='btn' color="primary">Next</Button>
+                                <Button size="large" variant="outlined" onClick={this.handleClick} className='btn' color="primary">Next</Button>
                             </Link>
                         </div>  
                     </Paper>

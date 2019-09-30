@@ -27,7 +27,7 @@ class Review extends Component {
 
 
     completedFeedback = () => {
-        if (this.props.reduxState.feedBackReducer.feelings === 0) return false;
+        if (this.props.reduxState.feedBackReducer.feeling === 0) return false;
         if (this.props.reduxState.feedBackReducer.understanding === 0) return false;
         if (this.props.reduxState.feedBackReducer.support === 0) return false;
         if (this.props.reduxState.feedBackReducer.comments === '') return false;

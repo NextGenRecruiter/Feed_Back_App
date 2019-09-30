@@ -13,15 +13,24 @@ import TextField from '@material-ui/core/TextField';
 
 class feeling extends Component{
 
+    state = {
+        feeling:0,
+    }
+
     handleChange = (event) =>{
-        console.log(event);
+        console.log(event.target.value);
         
-        this.props.dispatch({
-            type:'FEEDBACK',
-            propertyName: this.props.feedBackReducer.feeling,
-            propertyValue:event.target.value,
+        this.setState({
+            feeling:event.target.value
         })
         
+    }
+
+    handleClick = () =>{
+        this.props.dispatch({
+            type:'FEELING',
+            payload:feeling,
+        })
     }
 
     render(){
@@ -44,10 +53,11 @@ class feeling extends Component{
                                 <Button size="large" variant="outlined" className='btn' color="primary">Back</Button>
                             </Link>
                         <Link to="/comment">
-					        <Button size="large" variant="outlined" className='btn' color="primary">Next</Button>
+					        <Button size="large" variant="outlined" onClick={this.handleClick} className='btn' color="primary">Next</Button>
 				        </Link>
                         </div>  
                     </Paper>
+
             </div>
         )
     }

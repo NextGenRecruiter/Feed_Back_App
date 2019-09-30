@@ -15,9 +15,18 @@ const FeedBack ={
 
 const feedBackReducer = (state = FeedBack, action) => {
     switch (action.type){
-        case 'FEEDBACK':
-            return {...state, [action.propertyName]: action.propertyValue};
+        case 'FEELING':
+            return {...state, feeling: action.payload};
+
+        case 'UNDERSTANDING':
+            return {...state, understanding: action.payload};
+
+        case 'SUPPORTED':
+            return {...state, supported: action.payload};
     
+        case 'COMMENT':
+            return {...state, comment: action.payload};
+
         case 'RESET':
             return FeedBack
 
